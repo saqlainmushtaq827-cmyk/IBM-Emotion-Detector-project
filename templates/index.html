@@ -1,0 +1,167 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>AI Emotion Detector</title>
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #eef2ff;
+            margin: 0;
+            padding: 50px 20px;
+            text-align: center;
+        }
+
+        .container {
+            max-width: 700px;
+            margin: auto;
+            background: white;
+            padding: 35px;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            color: #1e3a8a;
+        }
+
+        p {
+            color: #475569;
+        }
+
+        textarea {
+            width: 100%;
+            height: 130px;
+            padding: 15px;
+            font-size: 16px;
+            border: 1px solid #cbd5e1;
+            border-radius: 8px;
+            resize: vertical;
+        }
+
+        button {
+            margin-top: 20px;
+            background: #2563eb;
+            color: white;
+            border: none;
+            padding: 14px 30px;
+            border-radius: 8px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #1d4ed8;
+        }
+
+        #result {
+            margin-top: 25px;
+            padding: 15px;
+            border-radius: 8px;
+            background: #f1f5f9;
+            color: #1e293b;
+            overflow-wrap: anywhere;
+        }
+
+        .error {
+            color: #dc2626 !important;
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>AI Emotion Detector</h1>
+
+    <p>
+        Enter a sentence below to identify
+        the emotions expressed in your text.
+    </p>
+
+    <textarea
+            id="textToAnalyze"
+            placeholder="Enter your sentence here..."
+    ></textarea>
+
+    <br>
+
+    <button onclick="analyzeEmotion()">
+        Analyze Emotion
+    </button>
+
+    <div id="result" aria-live="polite"></div>
+
+</div>
+
+<script>
+
+    async function analyzeEmotion() {
+
+        const text = document
+            .getElementById("textToAnalyze")
+            .value;
+
+        const result = document.getElementById("result");
+
+        result.classList.remove("error");
+
+        if (!text.trim()) {
+
+            result.innerText = "Please enter some text!";
+
+            result.classList.add("error");
+
+            return;
+        }
+
+        result.innerText = "Analyzing emotions...";
+
+        try {
+
+            const url =
+                "/emotionDetector?textToAnalyze=" +
+                encodeURIComponent(text);
+
+            const response = await fetch(url);
+
+            const data = await response.text();
+
+            result.innerText = data;
+
+            if (!response.ok) {
+                result.classList.add("error");
+            }
+
+        } catch (error) {
+
+            result.innerText =
+                "An error occurred. Please try again.";
+
+            result.classList.add("error");
+
+        }
+
+    }
+
+</script>
+
+</body>
+
+</html>
