@@ -1,109 +1,48 @@
+IBM Emotion Detector Project
+Final Project
 
-# Emotion Detector
+An AI-powered Emotion Detection application built using Python, Flask, and a locally running Hugging Face emotion classification model.
 
-## Project Overview
+Features
+Detects anger, disgust, fear, joy, and sadness.
+Identifies the dominant emotion.
+Provides emotion confidence scores.
+Flask web interface.
+Local AI model inference.
+Technologies
+Python
+Flask
+Hugging Face Transformers
+PyTorch
+Run the application
 
-The Emotion Detector is an AI-powered web application that
-analyzes text and identifies the emotions expressed in it
-using the IBM Watson Natural Language Processing library.
+Install dependencies:
 
-The application detects five different emotions:
+bash
+pip install flask transformers torch
 
-1. Anger
-2. Disgust
-3. Fear
-4. Joy
-5. Sadness
 
-It also identifies the dominant emotion in the submitted text.
+Start the application:
 
-## Technologies Used
+bash
+python server.py
 
-- Python
-- IBM Watson NLP
-- Flask
-- Requests
-- HTML
-- CSS
-- JavaScript
-- Unittest
-- Pylint
 
-## Project Structure
+Open your browser:
 
-```text
-Emotion-Detector/
-│
+text
+http://127.0.0.1:5000/
+
+Project structure
+text
+IBM-Emotion-Detector-project/
 ├── EmotionDetection/
 │   ├── __init__.py
 │   └── emotion_detection.py
-│
 ├── templates/
 │   └── index.html
-│
-├── test_emotion_detection.py
 ├── server.py
-├── requirements.txt
 └── README.md
-```
 
-## Installation
 
-Clone the repository:
-
-```bash
-git clone https://github.com/YOUR-USERNAME/Emotion-Detector.git
-```
-
-Navigate into the project:
-
-```bash
-cd Emotion-Detector
-```
-
-Install the dependencies:
-
-```bash
-pip install -r requirements.txt
-```
-
-## Run the Application
-
-Start the Flask application:
-
-```bash
-python server.py
-```
-
-Open your browser and visit:
-
-http://127.0.0.1:5000
-
-## Run Unit Tests
-
-Execute:
-
-```bash
-python -m unittest -v test_emotion_detection.py
-```
-
-## Static Code Analysis
-
-Execute:
-
-```bash
-pylint server.py
-```
-
-## Features
-
-- Detects five human emotions.
-- Identifies the dominant emotion.
-- Provides a simple web interface.
-- Handles empty input.
-- Handles invalid service responses.
-- Includes automated unit tests.
-
-## Author
-
-Emotion Detector Final Project.
+Final Project
